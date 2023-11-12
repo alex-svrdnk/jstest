@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 
 html {
     box-sizing: border-box;
@@ -7,4 +8,83 @@ body {
     margin: 0;
     min-height: 100vh;
     background-color: antiquewhite;
+    font-family: 'UnifrakturCook', sans-serif;
 }
+
+h1 {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 40px;
+    letter-spacing: 10px;
+}
+
+/* Loader */
+
+.loader {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.loader::after,
+.loader::before {
+    content: '';
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #0a0101;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    animation: rotation 2s ease-in-out infinite alternate;
+}
+
+.loader::after {
+    border-color: #0a0101;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* image containter */
+.image-container {
+    margin: 10px 30%;
+}
+
+.image-container img {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* media query: large smartphone */
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    .image-container {
+        margin: 10px;
+    }
+}
+
+/* .loader img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
