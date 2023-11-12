@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 
 html {
     box-sizing: border-box;
@@ -7,168 +7,84 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-    background-color: #f3f7f7;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='58' viewBox='0 0 42 58'%3E%3Cg fill='%23000000' fill-opacity='0.16'%3E%3Cpath fill-rule='evenodd' d='M12 18h12v18h6v4H18V22h-6v-4zm-6-2v-4H0V0h36v6h6v36h-6v4h6v12H6v-6H0V16h6zM34 2H2v8h24v24h8V2zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 50h32v-8H10V18H2v32zm28-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'/%3E%3C/g%3E%3C/svg%3E");
-    color: black;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 700;
+    background-color: antiquewhite;
+    font-family: 'UnifrakturCook', sans-serif;
+}
+
+h1 {
     text-align: center;
-    align-items: center;
-    display: flex;
-    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 40px;
+    letter-spacing: 10px;
 }
 
-.quote-container {
-    width: auto;
-    max-width: 900px;
-    padding: 20px 30px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.459);
-    box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2)
-}
+/* Loader */
 
-.quote-text {
-    font-size: 2.75rem;
-
-
-}
-
-.long-quote {
-    font-size: 2rem;
-}
-
-.fa-quote-left {
-    font-size: 2rem;
-}
-
-.quote-author {
-    font-size: 2.1rem;
-    margin-top: 15px;
-    font-weight: 300;
-    font-style: italic;
-
-}
-
-.button-container {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-}
-
-button {
-    cursor: pointer;
-    font-size: 1.2rem;
-    height: 2.5rem;
-    border: none;
-    border-radius: 10px;
-    color: #f3f7f7;
-    background-color: #333;
-    outline: none;
-    padding: 0.5rem 1.8rem;
-    box-shadow: 0 0.3rem rgba(121, 121, 121, 0.64);
-}
-
-
-#new-quote:hover {
-    filter: invert(150%);
-}
-
-
-button:active {
-    transform: translate(0, 0.3rem);
-    box-shadow: 0 0.1rem rgba(255, 255, 255, 0.63);
-}
-
-.twitter-button:hover {
-    color: #38a1f3;
-}
-
-.fa-twitter {
-    font-size: 1.5rem;
-}
-
-/* loader */
 .loader {
-    transform: rotateZ(45deg);
-    perspective: 10000px;
-    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.loader::after,
+.loader::before {
+    content: '';
+    box-sizing: border-box;
     width: 100px;
     height: 100px;
-    color: black;
-  }
-    .loader:before,
-    .loader:after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: inherit;
-      height: inherit;
-      border-radius: 50%;
-      transform: rotateX(70deg);
-      animation: 1s spin linear infinite;
-    }
-    .loader:after {
-      color: #FF3D00;
-      transform: rotateY(70deg);
-      animation-delay: .4s;
-    }
+    border: 2px solid #0a0101;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    animation: rotation 2s ease-in-out infinite alternate;
+}
 
-  @keyframes rotate {
+.loader::after {
+    border-color: #0a0101;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes rotation {
     0% {
-      transform: translate(-50%, -50%) rotateZ(0deg);
+        transform: rotate(0deg);
     }
+
     100% {
-      transform: translate(-50%, -50%) rotateZ(360deg);
-    }
-  }
-
-  @keyframes rotateccw {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(-360deg);
-    }
-  }
-
-  @keyframes spin {
-    0%,
-    100% {
-      box-shadow: .2em 0px 0 0px currentcolor;
-    }
-    12% {
-      box-shadow: .2em .2em 0 0 currentcolor;
-    }
-    25% {
-      box-shadow: 0 .2em 0 0px currentcolor;
-    }
-    37% {
-      box-shadow: -.2em .2em 0 0 currentcolor;
-    }
-    50% {
-      box-shadow: -.2em 0 0 0 currentcolor;
-    }
-    62% {
-      box-shadow: -.2em -.2em 0 0 currentcolor;
-    }
-    75% {
-      box-shadow: 0px -.2em 0 0 currentcolor;
-    }
-    87% {
-      box-shadow: .2em -.2em 0 0 currentcolor;
-    }
-  }
-
-
-/* media query: tablet or smaller */
-@media screen and (max-width: 1000px) {
-    .quote-container {
-        margin: auto 10px;
-    }
-
-    .quote-text {
-        font-size: 2.5rem;
+        transform: rotate(360deg);
     }
 }
+
+/* image containter */
+.image-container {
+    margin: 10px 30%;
+}
+
+.image-container img {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* media query: large smartphone */
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    .image-container {
+        margin: 10px;
+    }
+}
+
+/* .loader img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
