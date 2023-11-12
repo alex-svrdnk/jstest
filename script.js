@@ -1,88 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-const quoteContainer = document.getElementById('quote-container');
-const quoteText = document.getElementById('quote');
-const authorText = document.getElementById('author');
-const twitterButton = document.getElementById('twitter');
-const newQuoteButton = document.getElementById('new-quote');
-const loader = document.getElementById('loader');
-
-let apiQuotes = [];
-
-// show loading
-function loading() {
-    loader.hidden = false;
-    quoteContainer.hidden = true;
-}
-
-// hide loading
-
-function complete() {
-    quoteContainer.hidden = false;
-    loader.hidden = true;
-}
-
-// show new quote
-function newQuote() {
-    loading();
-    // pick a random quote from api quotes array
-    const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
-    // check if author is blank and replace it with 'unknown'
-    if (quote.author == null) {
-        authorText.textcontent = 'Unknown';
-    } else {
-        authorText.textContent = quote.author;
-    }
-    // check quote length to determine tstyling
-    if (quote.text.length > 100) {
-        quoteText.classList.add('long-quote');
-    } else {
-        quoteText.classList.remove('long-quote');
-    }
-
-    // set quote, hide loader
-
-    setTimeout(() => {
-        quoteText.textContent = quote.text;
-        complete();
-    }, 500);
-
-}
-
-// get quotes from API
-async function getQuotes() {
-    loading();
-    const apiUrl = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
-    try {
-        const response = await fetch(apiUrl);
-        apiQuotes = await response.json();
-        newQuote();
-    } catch (e) {
-        // Catch error here
-        alert(e);
-
-    }
-}
-
-// tweet quote
-function tweetQuote() {
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
-    window.open(twitterUrl, '_blank');
-}
-
-// event listeners
-twitterButton.addEventListener('click', tweetQuote);
-newQuoteButton.addEventListener('click', newQuote);
-
-// on load 
-getQuotes();
-
-
-
-
-=======
->>>>>>> lazyload
 const imageContainer = document.getElementById('image-container');
 const loader = document.getElementById('loader');
 
@@ -138,13 +53,10 @@ async function getPhotos() {
 
 // check to see if scrolling near bottom page, load more photos
 window.addEventListener('scroll', () => {
-    console.log('scrolled');
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 1000) {
+        
+    }
 })
 
 // on load
-<<<<<<< HEAD
 getPhotos();
-=======
-getPhotos();
->>>>>>> ad17ced (lazy load implementation)
->>>>>>> lazyload
